@@ -1,0 +1,16 @@
+{
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "cSpell.ignoreWords": [
+        "default",
+        "default subtractor",
+        "subtractor",
+        "validation",
+        "xwpf"
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic"
+}
