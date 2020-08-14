@@ -8,11 +8,8 @@ import com.harsha.calculatorJavaAssessment.Operation;
 
 public class ExpressionEvaluator {
 
-    public List<Operation> addOperationsFromExpression(String expression) {
+    public List<Operation> createOperationListFromExpression(String expression) {
         List<Operation> operationList = new ArrayList<>();
-
-        int leftOperand, rightOperand;
-        char operator;
 
         char[] tokens = expression.toCharArray();
         Stack<Integer> values = new Stack<Integer>();
@@ -25,7 +22,6 @@ public class ExpressionEvaluator {
             if (tokens[i] >= '0' && tokens[i] <= '9') {
 
                 StringBuffer integerToken = new StringBuffer();
-
                 while (i < tokens.length && tokens[i] >= '0' && tokens[i] <= '9')
                     integerToken.append(tokens[i++]);
 
@@ -34,27 +30,16 @@ public class ExpressionEvaluator {
 
             else if (tokens[i] == '+' || tokens[i] == '-' || tokens[i] == '*' || tokens[i] == '/') {
 
-                while (!operations.empty() && hasPrecedence(tokens[i], operations.peek())) {
+                while (!operations.empty() && hasPrecedence(tokens[i], operations.peek()))
+                    performOperationAndAppendToOperationList(values, operations, operationList);
 
-                    leftOperand = values.pop();
-                    rightOperand = values.pop();
-                    operator = operations.pop();
-                    Operation operation = new Operation(leftOperand, rightOperand, Character.toString(operator));
-                    values.push(applyOperation(operator, leftOperand, rightOperand));
-                    operationList.add(operation);
-                }
                 operations.push(tokens[i]);
             }
         }
 
-        while (!operations.empty()) {
-            leftOperand = values.pop();
-            rightOperand = values.pop();
-            operator = operations.pop();
-            Operation operation = new Operation(leftOperand, rightOperand, Character.toString(operator));
-            values.push(applyOperation(operator, leftOperand, rightOperand));
-            operationList.add(operation);
-        }
+        while (!operations.empty())
+            performOperationAndAppendToOperationList(values, operations, operationList);
+
         return operationList;
     }
 
@@ -73,7 +58,6 @@ public class ExpressionEvaluator {
             if (tokens[i] >= '0' && tokens[i] <= '9') {
 
                 StringBuffer integerToken = new StringBuffer();
-
                 while (i < tokens.length && tokens[i] >= '0' && tokens[i] <= '9')
                     integerToken.append(tokens[i++]);
 
@@ -108,11 +92,14 @@ public class ExpressionEvaluator {
 
             if (tokens[i] == ' ')
                 continue;
+
             else if (tokens[i] >= '0' && tokens[i] <= '9') {
                 StringBuffer integerToken = new StringBuffer();
                 while (i < tokens.length && tokens[i] >= '0' && tokens[i] <= '9')
                     integerToken.append(tokens[i++]);
+
                 values.push(Integer.parseInt(integerToken.toString()));
+
             } else if (tokens[i] == '+' || tokens[i] == '-' || tokens[i] == '*' || tokens[i] == '/') {
 
                 while (!operations.empty() && hasPrecedence(tokens[i], operations.peek()))
@@ -162,4 +149,15 @@ public class ExpressionEvaluator {
         return resultNumber;
     }
 
+    private void performOperationAndAppendToOperationList(Stack<Integer> values, Stack<Character> operations,
+            List<Operation> operationList) {
+
+        int leftOperand = values.pop();
+        int rightOperand = values.pop();
+        char operator = operations.pop();
+        Operation operation = new Operation(leftOperand, rightOperand, Character.toString(operator));
+        values.push(applyOperation(operator, leftOperand, rightOperand));
+        operationList.add(operation);
+
+    }
 }

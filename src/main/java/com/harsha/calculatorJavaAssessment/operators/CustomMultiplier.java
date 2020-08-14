@@ -17,7 +17,7 @@ public class CustomMultiplier implements Multiplier {
                 multiplicationResult *= getSignificantPartFromNumber(number);
 
                 if (checkMultiplicationResult != multiplicationResult)
-                    throw new Exception("Multiplication Invalid :: Integer Overflow");
+                    throw new Exception("Integer Overflow");
             }
 
         } catch (Exception e) {

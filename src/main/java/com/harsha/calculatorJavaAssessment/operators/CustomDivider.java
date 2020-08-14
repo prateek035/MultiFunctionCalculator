@@ -9,10 +9,7 @@ public class CustomDivider implements Divider {
             return newA / newB;
 
         } catch (Exception e) {
-
-            System.out.println("*****Invalid Operation *****");
             e.printStackTrace();
-            System.out.println("****************************");
             return 0;
         }
     }

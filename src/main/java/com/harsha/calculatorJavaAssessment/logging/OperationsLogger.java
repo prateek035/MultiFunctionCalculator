@@ -36,9 +36,8 @@ public class OperationsLogger {
     }
 
     public void logOperations(List<Operation> operations, LoggingStrategy loggingStrategy) {
-        // TODO get logfile creator instance and create file
+
         logfileCreator = getLogfileCreator(loggingStrategy.getFileFormat());
-        // TODO create an instance of Notification
 
         File resultFile = logfileCreator.createLogFile(operations);
         Notification notification = new Notification();
@@ -50,7 +49,7 @@ public class OperationsLogger {
         notification.setAttachment(resultFile);
         notification.setSignature("Thanks and Regards");
 
-        // TODO Obtain an instance of notification sender and send notification
+        notificationsSender = getNotificationsSender();
         notificationsSender.sendNotification(notification);
     }
 }

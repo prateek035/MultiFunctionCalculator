@@ -31,8 +31,6 @@ public class CsvLogfileCreator implements LogfileCreator {
             return file;
 
         } catch (Exception e) {
-
-            System.out.println("Something went wrong!");
             e.printStackTrace();
         }
         return null;

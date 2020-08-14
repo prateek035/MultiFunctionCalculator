@@ -80,6 +80,7 @@ public class Main {
         // evaluator.evaluateExpressionInCustomMode(expression));
         // System.out.println("Default Result:" +
         // evaluator.evaluateExpressionInDefaultMode(expression));
+        // System.out.println(evaluator.createOperationListFromExpression(expression).toString());
         // myCalc.calculate(expression);
         // CsvLogfileCreator fileCreator3 = new CsvLogfileCreator();
         // File fileCSV = fileCreator3.createLogFile(myCalc.operations);

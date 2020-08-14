@@ -38,7 +38,6 @@ public class DocxLogfileCreator implements LogfileCreator {
             return file;
 
         } catch (Exception e) {
-            System.out.println("Something went wrong!");
             e.printStackTrace();
         }
 

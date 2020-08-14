@@ -12,7 +12,7 @@ public class DefaultSubtractor implements Subtractor {
             if (checkSubtractionResult == (a - b))
                 return (a - b);
             else
-                throw new RuntimeException("Subtraction Invalid :: Integer Overflow");
+                throw new RuntimeException("Integer Overflow");
         } catch (RuntimeException e) {
 
             System.out.println(e);

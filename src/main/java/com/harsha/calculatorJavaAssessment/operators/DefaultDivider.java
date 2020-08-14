@@ -10,9 +10,7 @@ public class DefaultDivider implements Divider {
 
         } catch (Exception e) {
 
-            System.out.println("*****Invalid Operation *****");
             e.printStackTrace();
-            System.out.println("****************************");
             return 0;
         }
     }

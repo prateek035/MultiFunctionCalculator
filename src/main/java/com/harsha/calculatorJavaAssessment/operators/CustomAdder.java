@@ -18,7 +18,7 @@ public class CustomAdder implements Adder {
                 checkAdditionResult += getSignificantPartFromNumber(number);
 
                 if (sum != checkAdditionResult)
-                    throw new Exception("Addition Invalid :: Integer Overflow");
+                    throw new Exception("Integer Overflow");
             }
 
         } catch (Exception e) {

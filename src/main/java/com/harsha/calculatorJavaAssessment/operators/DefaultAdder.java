@@ -18,7 +18,7 @@ public class DefaultAdder implements Adder {
                 checkAdditionResult += number;
 
                 if (sum != checkAdditionResult)
-                    throw new Exception("Addition Invalid :: Integer Overflow");
+                    throw new Exception("Integer Overflow");
             }
 
         } catch (Exception e) {

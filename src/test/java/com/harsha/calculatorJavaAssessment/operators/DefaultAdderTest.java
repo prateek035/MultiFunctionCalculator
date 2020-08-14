@@ -12,8 +12,6 @@ import static org.junit.Assert.*;
 
 public class DefaultAdderTest {
 
-    // TODO These tests currently fail. Please make them pass
-
     @InjectMocks
     DefaultAdder defaultAdder;
 

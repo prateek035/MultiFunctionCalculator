@@ -23,11 +23,7 @@ public class MailSender implements NotificationsSender {
     public void sendNotification(Notification notification) {
 
         Properties properties = new Properties();
-        properties.put("mail.smtp.auth", true);
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.mailtrap.io");
-        properties.put("mail.smtp.port", "2525");
-        properties.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");
+        configureProperties(properties);
 
         String username = "8ffba986c462f8";
         String password = "9db1a7eb0c73e5";
@@ -65,5 +61,14 @@ public class MailSender implements NotificationsSender {
             System.out.println("Message sent failed.");
             e.printStackTrace();
         }
+    }
+
+    public void configureProperties(Properties properties) {
+
+        properties.put("mail.smtp.auth", true);
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.mailtrap.io");
+        properties.put("mail.smtp.port", "2525");
+        properties.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");
     }
 }

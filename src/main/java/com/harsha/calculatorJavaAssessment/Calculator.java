@@ -30,7 +30,7 @@ public class Calculator {
         private Calculator calculator = new Calculator();
 
         public Calculator build() {
-            // TODO validation
+
             calculator.operations = new ArrayList<>();
             if (calculator.adder == null)
                 calculator.adder = new DefaultAdder();
@@ -47,44 +47,37 @@ public class Calculator {
         }
 
         public Builder adder(Adder adder) {
-            // TODO
             calculator.adder = adder;
             return this;
         }
 
         public Builder subtractor(Subtractor subtractor) {
-            // TODO
             calculator.subtractor = subtractor;
             return this;
         }
 
         public Builder multiplier(Multiplier multiplier) {
-            // TODO
             calculator.multiplier = multiplier;
             return this;
         }
 
         public Builder divider(Divider divider) {
-            // TODO
             calculator.divider = divider;
             return this;
         }
 
         public Builder calculationMode(CalculationMode calculationMode) {
-            // TODO
             calculator.calculationMode = calculationMode;
             return this;
         }
 
         public Builder loggingStrategy(LoggingStrategy loggingStrategy) {
-            // TODO
             calculator.loggingStrategy = loggingStrategy;
             return this;
         }
     }
 
     public Integer add(List<Integer> numbers) {
-        // TODO Check mode, Add to operations
 
         for (int opCount = 0; opCount < numbers.size() - 1; opCount++) {
             Operation operation = new Operation(numbers.get(opCount), numbers.get(opCount + 1), " + ");
@@ -94,13 +87,12 @@ public class Calculator {
     }
 
     public Integer subtract(Integer a, Integer b) {
-        // TODO Check mode, Add to operations
+
         operations.add(new Operation(a, b, " - "));
         return subtractor.subtract(a, b);
     }
 
     public Integer multiply(List<Integer> numbers) {
-        // TODO Check mode, Add to operations
 
         for (int opCount = 0; opCount < numbers.size() - 1; opCount++) {
             Operation operation = new Operation(numbers.get(opCount), numbers.get(opCount + 1), " * ");
@@ -110,7 +102,7 @@ public class Calculator {
     }
 
     public Integer divide(Integer a, Integer b) {
-        // TODO Check mode, Add to operations
+
         operations.add(new Operation(a, b, " / "));
         return divider.divide(a, b);
     }
@@ -130,10 +122,9 @@ public class Calculator {
     }
 
     public Integer calculate(String expression) {
-        // TODO
         ExpressionEvaluator evaluator = new ExpressionEvaluator();
 
-        for (Operation operation : evaluator.addOperationsFromExpression(expression)) {
+        for (Operation operation : evaluator.createOperationListFromExpression(expression)) {
             operations.add(operation);
         }
 

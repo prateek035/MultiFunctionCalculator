@@ -21,7 +21,6 @@ public class TxtLogfileCreator implements LogfileCreator {
             myWriter.close();
             return file;
         } catch (IOException e) {
-            System.out.println("Something went wrong!");
             e.printStackTrace();
         }
         return null;

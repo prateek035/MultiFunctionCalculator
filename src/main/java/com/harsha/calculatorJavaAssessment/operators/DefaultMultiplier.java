@@ -19,7 +19,7 @@ public class DefaultMultiplier implements Multiplier {
                 multiplicationResult *= number;
 
                 if (checkMultiplicationResult != multiplicationResult)
-                    throw new Exception("Multiplication Invalid :: Integer Overflow");
+                    throw new Exception("Integer Overflow");
             }
 
         } catch (Exception e) {
